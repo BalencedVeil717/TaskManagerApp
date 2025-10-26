@@ -25,11 +25,9 @@ public class TaskService
     public void MarkComplete(int id)
     {
         var task = _tasks.FirstOrDefault(t => t.Id == id);
-        if (task != null)
-        {
-            task.IsCompleted = true;
-            SaveTasks();
-        }
+        if (task == null) return;
+        task.IsCompleted = true;
+        SaveTasks();
     }
 
     private void SaveTasks()
